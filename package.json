@@ -1,6 +1,7 @@
 {
-  "name": "{{project}}",
+  "name": "bygger",
   "private": true,
+  "license": "Apache-2.0",
   "devDependencies": {
     "@prettier/plugin-xml": "0",
     "husky": "6",
