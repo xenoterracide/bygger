@@ -8,7 +8,3 @@ plugins {
   id("our.spotless")
   id("our.coverage")
 }
-
-dependencies {
-  runtimeOnly("org.springframework.boot:spring-boot-starter-log4j2")
-}

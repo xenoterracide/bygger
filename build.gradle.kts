@@ -6,6 +6,12 @@ plugins {
   id("our.java-library")
 }
 
+dependencies {
+  implementation(libs.java.parser)
+  implementation(libs.autoservice)
+  testImplementation(libs.compile.testing)
+}
+
 tasks.dependencies {
   dependsOn(subprojects.map { it.tasks.dependencies })
 }
