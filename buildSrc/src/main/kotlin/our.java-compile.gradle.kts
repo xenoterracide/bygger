@@ -174,7 +174,6 @@ tasks.withType<JavaCompile>().configureEach {
       "ClassName",
       "ComparisonContractViolated",
       "DeduplicateConstants",
-      "DivZero",
       "EmptyIf",
       "FuzzyEqualsShouldNotBeUsedInEqualsMethod",
       "IterablePathParameter",

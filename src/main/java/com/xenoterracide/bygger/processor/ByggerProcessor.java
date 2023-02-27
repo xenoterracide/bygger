@@ -20,6 +20,6 @@ public class ByggerProcessor extends AbstractProcessor {
     Set<? extends TypeElement> annotations,
     RoundEnvironment roundEnv
   ) {
-    return true;
+    return false;
   }
 }
