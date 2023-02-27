@@ -205,7 +205,7 @@ tasks.withType<JavaCompile>().configureEach {
       "Var"
     )
 
-    val inIdea = providers.systemProperty("idea.active").forUseAtConfigurationTime().map { it.toBoolean() }
+    val inIdea = providers.systemProperty("idea.active").map { it.toBoolean() }
     if (!inIdea.getOrElse(false)) {
       errors.addAll(
         listOf(
