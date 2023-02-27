@@ -88,7 +88,7 @@ __metadata:
     prettier: ^2.8.4
     prettier-plugin-java: ^2.0.0
     prettier-plugin-properties: ^0.2.0
-    pretty-quick: 3
+    pretty-quick: ^3.1.3
   languageName: unknown
   linkType: soft
 
@@ -432,7 +432,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-quick@npm:3":
+"pretty-quick@npm:^3.1.3":
   version: 3.1.3
   resolution: "pretty-quick@npm:3.1.3"
   dependencies:

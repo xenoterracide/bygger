@@ -7,14 +7,11 @@ import com.google.testing.compile.JavaFileObjects;
 import org.junit.jupiter.api.Test;
 
 public class ClassAnnotationTest {
+
   @Test
   void testImmutable() {
-    var comp = javac().compile(
-      JavaFileObjects.forSourceLines(
-        "cxb.Example",
-        "package cxb;"
-      )
-    );
+    var comp = javac()
+      .compile(JavaFileObjects.forSourceLines("cxb.Example", "package cxb;"));
     assertThat(comp.errors()).isEmpty();
   }
 }
