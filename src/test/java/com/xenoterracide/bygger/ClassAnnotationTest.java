@@ -1,10 +1,10 @@
 package com.xenoterracide.bygger;
 
-import com.google.testing.compile.JavaFileObjects;
-import org.junit.jupiter.api.Test;
-
 import static com.google.testing.compile.Compiler.javac;
 import static org.assertj.core.api.Assertions.assertThat;
+
+import com.google.testing.compile.JavaFileObjects;
+import org.junit.jupiter.api.Test;
 
 public class ClassAnnotationTest {
   @Test
@@ -15,6 +15,6 @@ public class ClassAnnotationTest {
         "package cxb;"
       )
     );
-    assertThat( comp.errors() ).isEmpty();
+    assertThat(comp.errors()).isEmpty();
   }
 }
