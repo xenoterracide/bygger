@@ -5,5 +5,6 @@ plugins {
   id("our.java-test")
   id("our.checkstyle")
   id("our.spotbugs")
+  id("our.spotless")
   id("our.coverage")
 }
