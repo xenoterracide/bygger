@@ -16,6 +16,8 @@ spotless {
   java {
     licenseHeader(
       """
+      /**
+
       $copyright
       $license
       $licenseSimple
@@ -31,6 +33,8 @@ spotless {
       WITHOUT WARRANTIES OR CONDITIONS OFS ANY KIND, either express or implied.
       See the License for the specific language governing permissions and
       limitations under the License.
+
+      **/
       """.trimIndent().normaliseLineSeparators()
     )
   }
