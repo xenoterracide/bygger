@@ -1,17 +1,32 @@
 package com.xenoterracide.bygger;
 
+import static com.google.testing.compile.CompilationSubject.assertThat;
 import static com.google.testing.compile.Compiler.javac;
-import static org.assertj.core.api.Assertions.assertThat;
 
 import com.google.testing.compile.JavaFileObjects;
+import com.xenoterracide.bygger.processor.ByggerProcessor;
 import org.junit.jupiter.api.Test;
 
 public class ClassAnnotationTest {
 
   @Test
   void testImmutable() {
-    var comp = javac()
-      .compile(JavaFileObjects.forSourceLines("cxb.Example", "package cxb;"));
-    assertThat(comp.errors()).isEmpty();
+    var source =
+      """
+      import com.xenoterracide.bygger.annotations.ValueObject;
+      import javax.annotation.Nonnull;
+
+      @ValueObject
+      public interface HelloWorld {
+        @Nonnull String getHello();
+        @Nonnull String getWorld();
+      }
+      """;
+
+    var compilation = javac()
+      .withProcessors(new ByggerProcessor())
+      .compile(JavaFileObjects.forSourceString("HelloWorld", source));
+
+    assertThat(compilation).succeeded();
   }
 }

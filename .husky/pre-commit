@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+. /opt/asdf-vm/asdf.sh
+. ~/.asdf/plugins/java/set-java-home.bash
 ./gradlew --configuration-cache spotlessApply
 yarn lint-staged
