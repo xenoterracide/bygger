@@ -29,7 +29,7 @@ import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.TypeElement;
 
-@SupportedAnnotationTypes("com.xenoterracide.bygger.annotations.")
+@SupportedAnnotationTypes("com.xenoterracide.bygger.annotations.*")
 @SupportedSourceVersion(SourceVersion.RELEASE_17)
 @AutoService(Processor.class)
 public class ByggerProcessor extends AbstractProcessor {
