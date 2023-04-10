@@ -10,16 +10,17 @@ import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.TypeElement;
 
-@SupportedAnnotationTypes("com.xenoterracide.bygger.annotations.*")
+@SupportedAnnotationTypes("com.xenoterracide.bygger.annotations.")
 @SupportedSourceVersion(SourceVersion.RELEASE_17)
 @AutoService(Processor.class)
 public class ByggerProcessor extends AbstractProcessor {
 
   @Override
-  public boolean process(
-    Set<? extends TypeElement> annotations,
-    RoundEnvironment roundEnv
-  ) {
+  public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+    annotations.forEach(System.out::println);
+    for (TypeElement annotation : annotations) {
+      roundEnv.getElementsAnnotatedWith(annotation).forEach(System.out::println);
+    }
     return false;
   }
 }
