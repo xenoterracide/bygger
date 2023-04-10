@@ -7,8 +7,10 @@ plugins {
 }
 
 dependencies {
+  implementation(platform(libs.spring.platform))
   implementation(libs.java.parser)
   implementation(libs.autoservice)
+  implementation(libs.commons.lang)
   testImplementation(libs.compile.testing)
 }
 
