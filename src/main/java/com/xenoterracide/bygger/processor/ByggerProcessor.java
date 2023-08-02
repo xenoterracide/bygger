@@ -20,10 +20,17 @@ limitations under the License.
 package com.xenoterracide.bygger.processor;
 
 import com.google.auto.service.AutoService;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.processing.*;
+import javax.annotation.processing.AbstractProcessor;
+import javax.annotation.processing.Processor;
+import javax.annotation.processing.RoundEnvironment;
+import javax.annotation.processing.SupportedAnnotationTypes;
+import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
@@ -36,20 +43,29 @@ public class ByggerProcessor extends AbstractProcessor {
 
   @Override
   public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-    var map = annotations
+    Map<ElementKind, List<Element>> map = annotations
       .stream()
       .map(roundEnv::getElementsAnnotatedWith)
       .flatMap(Set::stream)
-      .collect(Collectors.toUnmodifiableMap(Element::getKind, Stream::of));
+      .collect(Collectors.groupingBy(Element::getKind));
 
     map
-      .getOrDefault(ElementKind.INTERFACE, Stream.empty())
+      .getOrDefault(ElementKind.INTERFACE, List.of())
+      .stream()
       .map(Element::getClass)
-      .forEach(
-        Try.of(clazz -> {
-          this.processingEnv.getFiler().createSourceFile(clazz.getCanonicalName() + "Builder");
-        })
-      );
+      .forEach(clazz -> {
+        try {
+          var sourceFile =
+            this.processingEnv.getFiler()
+              .createSourceFile(clazz.getPackageName() + "." + clazz.getSimpleName() + "Builder");
+
+          try (var out = new PrintWriter(sourceFile.openWriter())) {
+            out.println("\n\n");
+          }
+        } catch (IOException e) {
+          throw new RuntimeException(e);
+        }
+      });
     return false;
   }
 }

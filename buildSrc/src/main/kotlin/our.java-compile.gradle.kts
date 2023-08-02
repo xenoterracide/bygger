@@ -33,6 +33,7 @@ tasks.withType<JavaCompile>().configureEach {
     listOf(
       "-parameters",
       "-g",
+      "-Xdiags:verbose",
       "-Xlint:all",
       "-Xlint:-processing",
       "-Xlint:-exports",
