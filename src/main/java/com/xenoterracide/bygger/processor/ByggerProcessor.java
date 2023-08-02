@@ -60,7 +60,7 @@ public class ByggerProcessor extends AbstractProcessor {
               .createSourceFile(clazz.getPackageName() + "." + clazz.getSimpleName() + "Builder");
 
           try (var out = new PrintWriter(sourceFile.openWriter())) {
-            out.println("\n\n");
+            out.println("test\n\n");
           }
         } catch (IOException e) {
           throw new RuntimeException(e);

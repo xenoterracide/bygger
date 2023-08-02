@@ -46,6 +46,8 @@ class ClassAnnotationTest {
       .withProcessors(new ByggerProcessor())
       .compile(JavaFileObjects.forSourceString("HelloWorld", source));
 
+    compilation.diagnostics().forEach(System.out::println);
+
     assertThat(compilation).succeededWithoutWarnings();
     assertThat(compilation)
       .generatedSourceFile("GeneratedHelloWorld")
