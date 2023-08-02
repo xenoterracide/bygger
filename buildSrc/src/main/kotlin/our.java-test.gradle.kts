@@ -16,7 +16,7 @@ dependencies {
   implementation(libs.log4j.api)
   testImplementation(platform(libs.junit.bom))
   testImplementation(libs.bundles.test)
-  testRuntimeOnly(libs.junit.engine)
+  testRuntimeOnly(libs.bundles.junit.platform)
 }
 
 val available = tasks.register("tests available") {
