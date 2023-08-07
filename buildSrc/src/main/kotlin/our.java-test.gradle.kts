@@ -1,4 +1,5 @@
 import org.gradle.accessors.dm.LibrariesForLibs
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import java.io.FileNotFoundException
 
@@ -35,6 +36,7 @@ tasks.test.configure {
     lifecycle {
       showStandardStreams = true
       displayGranularity = 2
+      exceptionFormat = TestExceptionFormat.FULL
       events.addAll(listOf(TestLogEvent.STARTED, TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED))
     }
   }
