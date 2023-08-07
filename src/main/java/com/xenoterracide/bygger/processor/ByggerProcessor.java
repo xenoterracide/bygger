@@ -51,16 +51,12 @@ public class ByggerProcessor extends AbstractProcessor {
 
     map
       .getOrDefault(ElementKind.INTERFACE, List.of())
-      .stream()
-      .map(Element::getClass)
       .forEach(clazz -> {
         try {
-          var sourceFile =
-            this.processingEnv.getFiler()
-              .createSourceFile(clazz.getPackageName() + "." + clazz.getSimpleName() + "Builder");
+          var sourceFile = this.processingEnv.getFiler().createSourceFile(clazz.getSimpleName() + "Builder");
 
           try (var out = new PrintWriter(sourceFile.openWriter())) {
-            out.println("test\n\n");
+            out.println("class " + clazz.getSimpleName() + "Builder {}\n\n");
           }
         } catch (IOException e) {
           throw new RuntimeException(e);

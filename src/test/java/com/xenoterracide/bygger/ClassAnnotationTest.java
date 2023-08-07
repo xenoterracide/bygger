@@ -20,12 +20,10 @@ limitations under the License.
 package com.xenoterracide.bygger;
 
 import static com.google.testing.compile.Compiler.javac;
-import static org.assertj.core.api.Assertions.assertThat;
 
 import com.google.testing.compile.CompilationSubject;
 import com.google.testing.compile.JavaFileObjects;
 import com.xenoterracide.bygger.processor.ByggerProcessor;
-import java.io.IOException;
 import org.junit.jupiter.api.Test;
 
 class ClassAnnotationTest {
@@ -48,22 +46,10 @@ class ClassAnnotationTest {
       .withProcessors(new ByggerProcessor())
       .compile(JavaFileObjects.forSourceString("HelloWorld", source));
 
-    compilation.diagnostics().forEach(System.out::println);
-    compilation
-      .generatedSourceFiles()
-      .forEach(f -> {
-        System.out.println(f.getName());
-        try (var s = f.openInputStream()) {
-          s.transferTo(System.out);
-        } catch (IOException e) {
-          throw new RuntimeException(e);
-        }
-      });
-    assertThat(compilation.generatedFiles()).hasSize(3);
     CompilationSubject.assertThat(compilation).succeededWithoutWarnings();
     CompilationSubject
       .assertThat(compilation)
-      .generatedSourceFile("GeneratedHelloWorld")
-      .hasSourceEquivalentTo(JavaFileObjects.forResource("GeneratedHelloWorld.java"));
+      .generatedSourceFile("HelloWorldBuilder")
+      .hasSourceEquivalentTo(JavaFileObjects.forSourceString("HelloWorldBuilder", "class HelloWorldBuilder {}"));
   }
 }

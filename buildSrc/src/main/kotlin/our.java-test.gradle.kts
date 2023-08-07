@@ -32,6 +32,13 @@ val available = tasks.register("tests available") {
 tasks.test.configure {
   useJUnitPlatform()
 
+  // See: https://github.com/google/compile-testing/issues/222
+  jvmArgs =listOf(
+    "--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED",
+    "--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED",
+    "--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED"
+  )
+
   testLogging {
     lifecycle {
       showStandardStreams = true
