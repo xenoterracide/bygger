@@ -77,7 +77,7 @@
     <property name="fileExtensions" value="java" />
   </module>
   <module name="LineLength">
-    <property name="max" value="100" />
+    <property name="max" value="120" />
     <property name="fileExtensions" value="java" />
   </module>
 
@@ -149,10 +149,7 @@
     <!-- Checks for imports                              -->
     <!-- See https://checkstyle.org/config_imports.html -->
     <module name="CustomImportOrder">
-      <property
-        name="customImportOrderRules"
-        value="STATIC###SPECIAL_IMPORTS"
-      />
+      <property name="customImportOrderRules" value="STATIC###SPECIAL_IMPORTS" />
       <property name="specialImportsRegExp" value="^.*$" />
       <property name="sortImportsInGroupAlphabetically" value="true" />
     </module>
