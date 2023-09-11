@@ -5,9 +5,15 @@
 
 version: 2
 updates:
-  - package-ecosystem:
-    - java
-    - npm
+  - package-ecosystem: gradle
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: gradle
+    directory: "/buildSrc" # Location of package manifests
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: npm
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
