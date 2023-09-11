@@ -1,6 +1,7 @@
 import com.github.spotbugs.snom.Confidence
 import com.github.spotbugs.snom.Effort
 import com.github.spotbugs.snom.SpotBugsTask
+import org.gradle.accessors.dm.LibrariesForLibs
 
 plugins {
   `java-base`
@@ -8,10 +9,7 @@ plugins {
 }
 
 spotbugs {
-  val config = rootProject.file(".config/spotbugs/exclude.xml")
-  if (config.exists()) {
-    excludeFilter.set(config)
-  }
+  excludeFilter.set(rootProject.file(".config/spotbugs/exclude.xml"))
   effort.set(Effort.MAX)
   reportLevel.set(Confidence.LOW)
 }
@@ -22,6 +20,8 @@ tasks.withType<SpotBugsTask>().configureEach {
   }
 }
 
+val libs = the<LibrariesForLibs>()
+
 dependencies {
-  spotbugs("com.github.spotbugs:spotbugs:4.5.3")
+  spotbugs(libs.spotbugs)
 }

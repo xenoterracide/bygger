@@ -1,3 +1,4 @@
+import com.diffplug.gradle.spotless.SpotlessTask
 import org.gradle.kotlin.dsl.support.normaliseLineSeparators
 
 plugins {
@@ -6,21 +7,18 @@ plugins {
 }
 
 val copyright = "Copyright © \$YEAR Caleb Cushing."
-val license = "Apache 2.0. See https://github.com/xenoterracide/brix/LICENSE.txt"
-val licenseSimple = "https://choosealicense.com/licenses/apache-2.0/#"
+
+tasks.withType<SpotlessTask>().configureEach {
+  enabled = !providers.environmentVariable("CI").isPresent
+}
 
 spotless {
-  val isCI = providers.environmentVariable("CI").isPresent
-  ratchetFrom = if (isCI) "HEAD~1" else "HEAD"
-
   java {
     licenseHeader(
       """
-      /**
+      /*
 
       $copyright
-      $license
-      $licenseSimple
 
       Licensed under the Apache License, Version 2.0 (the "License");
       you may not use this file except in compliance with the License.
@@ -34,7 +32,7 @@ spotless {
       See the License for the specific language governing permissions and
       limitations under the License.
 
-      **/
+      */
       """.trimIndent().normaliseLineSeparators()
     )
   }

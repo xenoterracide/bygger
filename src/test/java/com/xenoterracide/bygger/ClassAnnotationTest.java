@@ -1,8 +1,6 @@
-/**
+/*
 
 Copyright © 2023 Caleb Cushing.
-Apache 2.0. See https://github.com/xenoterracide/brix/LICENSE.txt
-https://choosealicense.com/licenses/apache-2.0/#
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,7 +14,7 @@ WITHOUT WARRANTIES OR CONDITIONS OFS ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-**/
+*/
 package com.xenoterracide.bygger;
 
 import static com.google.testing.compile.Compiler.javac;
@@ -40,16 +38,18 @@ class ClassAnnotationTest {
         @Nonnull String getHello();
         @Nonnull String getWorld();
       }
-      """;
+      """.stripIndent();
 
     var compilation = javac()
       .withProcessors(new ByggerProcessor())
       .compile(JavaFileObjects.forSourceString("HelloWorld", source));
 
+    var generatedClass = "HelloWorldBuilder";
+
     CompilationSubject.assertThat(compilation).succeededWithoutWarnings();
     CompilationSubject
       .assertThat(compilation)
-      .generatedSourceFile("HelloWorldBuilder")
-      .hasSourceEquivalentTo(JavaFileObjects.forSourceString("HelloWorldBuilder", "class HelloWorldBuilder {}"));
+      .generatedSourceFile(generatedClass)
+      .hasSourceEquivalentTo(JavaFileObjects.forSourceString(generatedClass, "class HelloWorldBuilder {}"));
   }
 }
