@@ -33,6 +33,7 @@ tasks.withType<JavaCompile>().configureEach {
     listOf(
       "-parameters",
       "-g",
+      "-Xdiags:verbose",
       "-Xlint:all",
       "-Xlint:-processing",
       "-Xlint:-exports",
@@ -201,7 +202,6 @@ tasks.withType<JavaCompile>().configureEach {
       "MultipleTopLevelClasses",
       "PackageLocation",
       "RemoveUnusedImports",
-      "WildcardImport",
       "Var"
     )
 
@@ -209,6 +209,7 @@ tasks.withType<JavaCompile>().configureEach {
     if (!inIdea.getOrElse(false)) {
       errors.addAll(
         listOf(
+          "WildcardImport",
           "UnusedVariable",
           "UnusedMethod",
           "UnusedNestedClass",

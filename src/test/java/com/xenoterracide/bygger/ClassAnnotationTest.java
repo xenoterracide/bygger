@@ -19,9 +19,9 @@ limitations under the License.
 **/
 package com.xenoterracide.bygger;
 
-import static com.google.testing.compile.CompilationSubject.assertThat;
 import static com.google.testing.compile.Compiler.javac;
 
+import com.google.testing.compile.CompilationSubject;
 import com.google.testing.compile.JavaFileObjects;
 import com.xenoterracide.bygger.processor.ByggerProcessor;
 import org.junit.jupiter.api.Test;
@@ -46,9 +46,10 @@ class ClassAnnotationTest {
       .withProcessors(new ByggerProcessor())
       .compile(JavaFileObjects.forSourceString("HelloWorld", source));
 
-    assertThat(compilation).succeededWithoutWarnings();
-    assertThat(compilation)
-      .generatedSourceFile("GeneratedHelloWorld")
-      .hasSourceEquivalentTo(JavaFileObjects.forResource("GeneratedHelloWorld.java"));
+    CompilationSubject.assertThat(compilation).succeededWithoutWarnings();
+    CompilationSubject
+      .assertThat(compilation)
+      .generatedSourceFile("HelloWorldBuilder")
+      .hasSourceEquivalentTo(JavaFileObjects.forSourceString("HelloWorldBuilder", "class HelloWorldBuilder {}"));
   }
 }

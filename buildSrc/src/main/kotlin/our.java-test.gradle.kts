@@ -1,4 +1,5 @@
 import org.gradle.accessors.dm.LibrariesForLibs
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import java.io.FileNotFoundException
 
@@ -16,7 +17,7 @@ dependencies {
   implementation(libs.log4j.api)
   testImplementation(platform(libs.junit.bom))
   testImplementation(libs.bundles.test)
-  testRuntimeOnly(libs.junit.engine)
+  testRuntimeOnly(libs.bundles.junit.platform)
 }
 
 val available = tasks.register("tests available") {
@@ -31,10 +32,16 @@ val available = tasks.register("tests available") {
 tasks.test.configure {
   useJUnitPlatform()
 
+  // See: https://github.com/google/compile-testing/issues/222
+  jvmArgs("--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED")
+  jvmArgs("--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED")
+  jvmArgs("--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED")
+
   testLogging {
     lifecycle {
       showStandardStreams = true
       displayGranularity = 2
+      exceptionFormat = TestExceptionFormat.FULL
       events.addAll(listOf(TestLogEvent.STARTED, TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED))
     }
   }
