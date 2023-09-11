@@ -12,12 +12,10 @@ autoservice = "com.google.auto.service:auto-service:1.+"
 bndlib = "biz.aQute.bnd:bndlib:2.+"
 checker-annotations = { module = "org.checkerframework:checker-qual", version.ref = "checker" }
 checker-core = { module = "org.checkerframework:checker", version.ref = "checker" }
-checkstyle = "com.puppycrawl.tools:checkstyle:8.+"
+checkstyle = "com.puppycrawl.tools:checkstyle:10.+"
 commons-io = "commons-io:commons-io:2.+"
 commons-lang = { module = "org.apache.commons:commons-lang3" }
 compile-testing = "com.google.testing.compile:compile-testing:0.+"
-dgs-platform = "com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:4.+"
-dgs-starter = { module = "com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter" }
 equalsverifier = "nl.jqno.equalsverifier:equalsverifier:3.+"
 errorprone-annotations = { module = "com.google.errorprone:error_prone_annotations", version.ref = "ep" }
 errorprone-core = { module = "com.google.errorprone:error_prone_core", version.ref = "ep" }
@@ -59,7 +57,6 @@ spring-beans = { module = "org.springframework:spring-beans" }
 spring-test = { module = "org.springframework:spring-test" }
 spring-security-core = { module = "org.springframework.security:spring-security-core" }
 spring-security-oauth2-core = { module = "org.springframework.security:spring-security-oauth2" }
-spring-security-oauth2-authorization-server = "org.springframework.security.experimental:spring-security-oauth2-authorization-server:0.1.1"
 spring-boot-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
 spring-boot-autoconfigure = { module = "org.springframework.boot:spring-boot-autoconfigure" }
 spring-boot-starter-core = { module = "org.springframework.boot:spring-boot-starter" }
@@ -76,8 +73,6 @@ spring-boot-devtools = { module = "org.springframework.boot:spring-boot-devtools
 spring-data-commons = { module = "org.springframework.data:spring-data-commons" }
 spring-data-neo4j = { module = "org.springframework.data:spring-data-neo4j" }
 testcontainers = "org.testcontainers:junit-jupiter:1.+"
-tika = "org.apache.tika:tika-core:1.+"
-uuid-creator = "com.github.f4b6a3:uuid-creator:3.+"
 vavr = "io.vavr:vavr:0.+"
 
 [bundles]
