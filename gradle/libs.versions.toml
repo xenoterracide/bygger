@@ -77,7 +77,7 @@ spring-data-commons = { module = "org.springframework.data:spring-data-commons" 
 spring-data-neo4j = { module = "org.springframework.data:spring-data-neo4j" }
 testcontainers = "org.testcontainers:junit-jupiter:1.+"
 tika = "org.apache.tika:tika-core:1.+"
-uuid-creator = "com.github.f4b6a3:uuid-creator:3.+"
+uuid-creator = "com.github.f4b6a3:uuid-creator:5.+"
 vavr = "io.vavr:vavr:0.+"
 
 [bundles]
