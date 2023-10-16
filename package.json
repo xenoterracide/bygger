@@ -9,7 +9,7 @@
     "pinst": "^3.0.0",
     "prettier": "2",
     "prettier-plugin-java": "^2.3.1",
-    "prettier-plugin-properties": "^0.2.0"
+    "prettier-plugin-properties": "^0.3.0"
   },
   "scripts": {
     "postinstall": "husky install",
