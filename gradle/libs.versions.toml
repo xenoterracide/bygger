@@ -16,7 +16,7 @@ checkstyle = "com.puppycrawl.tools:checkstyle:8.+"
 commons-io = "commons-io:commons-io:2.+"
 commons-lang = { module = "org.apache.commons:commons-lang3" }
 compile-testing = "com.google.testing.compile:compile-testing:0.+"
-dgs-platform = "com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:4.+"
+dgs-platform = "com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:8.+"
 dgs-starter = { module = "com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter" }
 equalsverifier = "nl.jqno.equalsverifier:equalsverifier:3.+"
 errorprone-annotations = { module = "com.google.errorprone:error_prone_annotations", version.ref = "ep" }
